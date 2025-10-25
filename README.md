@@ -6,7 +6,7 @@
 
 ###
 
-<h2 align="left">สมาชิกภายในกลุ่ม</h2>
+<h2 align="left">Member</h2>
 
 ###
 <div align="center">
@@ -132,8 +132,6 @@ docker compose down -v
 To get started with this template, simply run the following commands:
 
 ```bash
-bun create elysia ./elysia-example
-cd elysia-example
 bun install
 ```
 
@@ -152,7 +150,10 @@ bun run db:generate
 bun run db:migrate
 bun run db:push
 ```
-
+## ⌨️ Development
+```
+bun run dev
+```
 ---
 
 ## 🌱 Seeding Database
