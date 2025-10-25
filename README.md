@@ -150,16 +150,6 @@ bun run dev
 ```
 ---
 
-## 🌱 Seeding Database
-
-Add seeding logic as needed. You can create a seeding script and run it like so:
-
-```bash
-bun run db:seed
-```
-
----
-
 ## 🌐 Frontend
 
 ### Getting Started
