@@ -1,10 +1,10 @@
-# RO-TRADE (Backend)
+# RO-TRADE
 
 ## 🧾 Project Description
 
 แพลตฟอร์มเว็บไซต์สำหรับการซื้อ–ขาย และแลกเปลี่ยนสิ่งของในเกม Roblox ที่เปิดโอกาสให้ผู้ใช้งานแต่ละคนสามารถทำหน้าที่ได้ทั้งผู้ซื้อและผู้ขาย ภายใต้การดูแลของผู้ดูแลระบบ (Admin) เพื่อให้การแลกเปลี่ยนเป็นไปอย่างราบรื่นและยุติธรรม
 
-## 👨‍👩‍👧‍👦 Member
+## 👨‍👩‍👧‍👦 Members
 
 | Student ID | Name                        |
 |------------|-----------------------------|
@@ -18,7 +18,12 @@
 
 ###
 
-<h3 align="left">BACKEND</h3>
+<h3 align="left">BACKEND</h3>  
+<p align="left">
+<a href="https://github.com/IMaxNohave/Backend.git" target="_blank">
+  <img src="https://img.shields.io/badge/GitHub%20Repository-white?logo=github&logoColor=black" alt="GitHub Repository" />
+</a>
+
 
 <p align="left">
   <a href="https://bun.sh/" target="_blank">
@@ -50,6 +55,11 @@
 ---
 
 <h3 align="left">FRONTEND</h3>
+<p align="left">
+<a href="https://github.com/IMaxNohave/Frontend.git" target="_blank">
+  <img src="https://img.shields.io/badge/GitHub%20Repository-white?logo=github&logoColor=black" alt="GitHub Repository" />
+</a>
+
 
 <p align="left">
   <a href="https://nextjs.org/" target="_blank">
