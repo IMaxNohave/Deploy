@@ -67,9 +67,6 @@
   <a href="https://ui.shadcn.com/" target="_blank">
     <img src="https://img.shields.io/badge/UI-shadcn%2Fui-%239B59B6?logo=radixui&logoColor=white" alt="shadcn/ui" />
   </a>
-  <a href="https://www.prisma.io/" target="_blank">
-    <img src="https://img.shields.io/badge/ORM-Prisma-%23003B57?logo=prisma&logoColor=white" alt="Prisma" />
-  </a>
   <a href="https://pnpm.io/" target="_blank">
     <img src="https://img.shields.io/badge/Package%20Manager-pnpm-%23F69220?logo=pnpm&logoColor=white" alt="pnpm" />
   </a>
