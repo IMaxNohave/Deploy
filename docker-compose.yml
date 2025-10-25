@@ -1,0 +1,103 @@
+name: IMaxNohave # You can also change this to another name to avoid warning with existing group.
+services:
+  database:
+    image: mysql:8.4 # stable version
+    container_name: IMaxNohave-db
+    restart: always
+    ports:
+      - "${MYSQL_PORT}:3306"
+    volumes:
+      - IMaxNohave-data:/var/lib/mysql
+      - ./_entrypoint:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DB=${MYSQL_DB}
+      - MYSQL_APP_USER=${MYSQL_APP_USER}
+      - MYSQL_APP_PASSWORD=${MYSQL_APP_PASSWORD}
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-p${MYSQL_ROOT_PASSWORD}",
+        ]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+    networks:
+      - IMaxNohave-net
+  redis:
+    image: redis/redis-stack:latest
+    container_name: IMaxNohave-redis
+    restart: always
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+    environment:
+      - REDIS_ARGS=--appendonly yes
+    volumes:
+      - redis-data:/data
+    networks:
+      - IMaxNohave-net
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping | grep PONG"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+  backend:
+    image: ${BACKEND_IMAGE_NAME}
+    depends_on:
+      database:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    container_name: IMaxNohave-backend
+    restart: always
+    working_dir: /app
+    ports:
+      - ${BACKEND_PORT}:3000
+    networks:
+      - IMaxNohave-net
+    env_file:
+      - ./.env
+    environment:
+      - MYSQL_DB=${MYSQL_DB}
+      - MYSQL_PORT=${MYSQL_PORT}
+      - REDIS_URL=${REDIS_URL}
+      - MYSQL_HOST=${MYSQL_HOST}
+      - MYSQL_APP_USER=${MYSQL_APP_USER}
+      - MYSQL_APP_PASSWORD=${MYSQL_APP_PASSWORD}
+    volumes:
+      - ./logs:/app/logs
+    command: >
+      sh -ceu '
+      bunx drizzle-kit push;
+      exec bun run dev
+      '
+  frontend:
+    container_name: IMaxNohave-frontend
+    image: ${FRONTEND_IMAGE_NAME}
+
+    depends_on:
+      - backend
+    ports:
+      - ${NGINX_PORT}:${NGINX_PORT}
+    networks:
+      - IMaxNohave-net
+    environment:
+      - HOST=0.0.0.0
+      - PORT=${NGINX_PORT}
+      - NGINX_PROXY=${NGINX_PROXY}
+      - NGINX_PORT=${NGINX_PORT}
+
+volumes:
+  IMaxNohave-data: # Check by using `docker volume ls` command
+    name: IMaxNohave-data
+  redis-data:
+    name: IMaxNohave-redis-data
+networks:
+  IMaxNohave-net: # Check by using `docker network ls` command
+    name: IMaxNohave-net
