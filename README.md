@@ -80,7 +80,6 @@
 - **Language:** [TypeScript](https://www.typescriptlang.org/)  
 - **Styling:** [Tailwind CSS 4](https://tailwindcss.com/) + PostCSS + Custom Variables  
 - **UI Components:** [shadcn/ui](https://ui.shadcn.com/)   
-- **Database/ORM (dev local):** [Prisma](https://www.prisma.io/) + SQLite  
 - **Package Manager:** [pnpm](https://pnpm.io/)  
 
 ---
